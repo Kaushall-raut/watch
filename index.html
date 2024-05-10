@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta http-equiv="refresh" content="1"> -->
+    <title>Watch</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .bodydiv {
+        width: 100%;
+        height: 100vh;
+        background-color: #1b252a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .clock {
+        width: 50rem;
+        height: 18rem;
+        border: 4px solid blue;
+        border-radius: 90px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+      .clock::before {
+        content: "";
+        width: 20rem;
+        height: 1rem;
+        background-color: blue;
+        position: absolute;
+        top: 100%;
+        left: 29%;
+        /* box-shadow: 0px 10px 26px blue; */
+        /* bottom: 80%; */
+      }
+      .clock::after {
+        content: "";
+        width: 48rem;
+        height: 0.5rem;
+        position: absolute;
+        top: 107%;
+        left: 2%;
+        background-color: blue;
+        filter: blur(10px);
+        /* box-shadow: 0px 10px 26px blue; */
+      }
+      .mainDiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      p {
+        font-size: 6rem;
+        text-align: center;
+        color: wheat;
+      }
+
+      @media screen and (max-width: 600px) {
+        .clock::before {
+          content: "";
+          width: 20rem;
+          height: 1rem;
+          background-color:transparent;
+          position: absolute;
+          top: 100%;
+          left: 29%;
+          /* box-shadow: 0px 10px 26px blue; */
+          /* bottom: 80%; */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bodydiv">
+      <div class="clock">
+        <div class="mainDiv">
+          <p id="clock"></p>
+        </div>
+      </div>
+    </div>
+    <script>
+      const currentTime = () => {
+        let store = new Date().toLocaleTimeString();
+        document.getElementById("clock").innerText = store;
+        console.log(store);
+      };
+      currentTime();
+      setInterval(() => {
+        currentTime();
+      }, 1000);
+    </script>
+  </body>
+</html>
